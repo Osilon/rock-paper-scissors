@@ -83,15 +83,21 @@ const div1 = document.querySelector(".buttons");
 div1.setAttribute("style", 
 "margin-bottom: 5px; text-align: center;");
 
-const div2 = document.createElement("div");
+const div2 = document.querySelector(".terminal");
 div2.setAttribute("style", 
-"color: white; background-color: gray; height: 666px; width: 300px; white-space: pre-wrap; margin-left: auto; margin-right: auto;");
+"color: white; background-color: gray; height: 150px; width: 300px; white-space: pre-wrap; margin-left: auto; margin-right: auto; padding: 10px;");
+
+const div3 = document.querySelector(".score");
+div3.setAttribute("style", "color: white; background-color: gray; width: 300px; margin-left: auto; margin-right: auto; padding: 10px; margin-bottom: 10px; margin-top: 10px;")
+div3.textContent = "Player: 0 | Computer: 0"
+
+const p = document.querySelector("p");
+p.setAttribute("style", "color: white; text-align: center;");
 
 div1.appendChild(rock);
 div1.appendChild(paper);
 div1.appendChild(scissors);
 div1.appendChild(reset);
-body.appendChild(div2);
 
 let clicks = 0;
 
@@ -122,6 +128,8 @@ rock.addEventListener("click", () => {
       paper.disabled = true;
     }
   }
+
+  div3.textContent = `Player: ${player} | Computer ${computer}`;
 });
 
 paper.addEventListener("click", () => {
@@ -151,6 +159,8 @@ paper.addEventListener("click", () => {
       paper.disabled = true;
     }
   }
+
+  div3.textContent = `Player: ${player} | Computer ${computer}`;
 });
 
 scissors.addEventListener("click", () => {
@@ -181,6 +191,7 @@ scissors.addEventListener("click", () => {
     }
   }
 
+  div3.textContent = `Player: ${player} | Computer ${computer}`;
 });
 
 reset.addEventListener("click", () => {
@@ -191,4 +202,5 @@ reset.addEventListener("click", () => {
   scissors.disabled = false;
   rock.disabled = false;
   paper.disabled = false;
+  div3.textContent = "Player: 0 | Computer: 0";
 });
