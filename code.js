@@ -1,8 +1,9 @@
-
-let computerMath = Math.floor(Math.random() * 3);
-
 let computerSelection;
 let playerSelection;
+
+function computerMath(){
+  return Math.floor(Math.random() * 3);
+}
 
 function getComputerChoice(choice){
   if(choice === 0) {
@@ -16,7 +17,8 @@ function getComputerChoice(choice){
   }
 }
 
-getComputerChoice(computerMath);
+let player = 0;
+let computer = 0;
 
 function playRound(playerSelection, computerSelection){
   if (playerSelection === "rock"){
@@ -24,28 +26,34 @@ function playRound(playerSelection, computerSelection){
       return "Tie.";
     }
     if(computerSelection === "paper"){
+      computer++;
       return "You lose! Paper beats Rock.";
     }
     if(computerSelection === "scissors"){
+      player++;
       return "You win! Rock beats Scissors.";
     }
   }
   else if (playerSelection ==="paper"){
     if (computerSelection === "rock"){
+      player++
       return "You win! Paper beats Rock.";
     }
     if (computerSelection === "paper"){
       return "Tie.";
     }
     if (computerSelection === "scissors"){
+      computer++;
       return "You lose! Scissors beats Paper.";
     }
   }
   else if (playerSelection === "scissors") {
     if (computerSelection === "rock"){
+      computer++;
       return "You lose! Rock beats Scissors.";
     }
     if (computerSelection === "paper"){
+      player++;
       return "You win! Scissors beats paper.";
     }
     if (computerSelection === "scissors"){
@@ -55,14 +63,132 @@ function playRound(playerSelection, computerSelection){
   }
 }
 
-function game(){
-  return playRound(playerSelection, computerSelection);
-}
 
-for (let i = 0; i < 5; i++){
-  playerSelection = prompt("Rock/Paper/Scissors", "Write here.");
-  playerSelection = playerSelection.toLowerCase();
-  console.log(game());
-}
+const rock = document.createElement("button");
+rock.innerHTML = "Rock";
+const paper = document.createElement("button");
+paper.innerHTML = "Paper";
+const scissors = document.createElement("button");
+scissors.innerHTML = "Scissors";
+const reset = document.createElement("button");
+reset.innerHTML = "Reset";
 
-console.log("The END.");
+let buttons = document.querySelectorAll(".buttons");
+let body = document.querySelector("body");
+
+const h1 = document.querySelector(".h1");
+h1.setAttribute("style", "color: white; text-align: center;")
+
+const div1 = document.querySelector(".buttons");
+div1.setAttribute("style", 
+"margin-bottom: 5px; text-align: center;");
+
+const div2 = document.createElement("div");
+div2.setAttribute("style", 
+"color: white; background-color: gray; height: 666px; width: 300px; white-space: pre-wrap; margin-left: auto; margin-right: auto;");
+
+div1.appendChild(rock);
+div1.appendChild(paper);
+div1.appendChild(scissors);
+div1.appendChild(reset);
+body.appendChild(div2);
+
+let clicks = 0;
+
+rock.addEventListener("click", () => {
+  getComputerChoice(computerMath());
+  let result = playRound("rock", computerSelection);
+  div2.textContent += `${result.toString()}\n`;
+
+  //Over
+  clicks += 1;
+  if(clicks === 5){
+    if(computer > player){
+      div2.textContent += "\nYou Lose\n";
+      scissors.disabled = true;
+      rock.disabled = true;
+      paper.disabled = true;
+    }
+    else if (computer < player){
+      div2.textContent += "\nYou Win!\n";
+      scissors.disabled = true;
+      rock.disabled = true;
+      paper.disabled = true;
+    }
+    else{
+      div2.textContent += "\nTie!\n";
+      scissors.disabled = true;
+      rock.disabled = true;
+      paper.disabled = true;
+    }
+  }
+});
+
+paper.addEventListener("click", () => {
+  getComputerChoice(computerMath());
+  let result = playRound("paper", computerSelection);
+  div2.textContent += `${result.toString()}\n`;
+
+  //Over
+  clicks += 1;
+  if(clicks === 5){
+    if(computer > player){
+      div2.textContent += "\nYou Lose\n";
+      scissors.disabled = true;
+      rock.disabled = true;
+      paper.disabled = true;
+    }
+    else if (computer < player){
+      div2.textContent += "\nYou Win!\n";
+      scissors.disabled = true;
+      rock.disabled = true;
+      paper.disabled = true;
+    }
+    else{
+      div2.textContent += "\nTie!\n";
+      scissors.disabled = true;
+      rock.disabled = true;
+      paper.disabled = true;
+    }
+  }
+});
+
+scissors.addEventListener("click", () => {
+  getComputerChoice(computerMath());
+  let result = playRound("scissors", computerSelection);
+  div2.textContent += `${result.toString()}\n`;
+
+  //Over
+  clicks += 1;
+  if(clicks === 5){
+    if(computer > player){
+      div2.textContent += "\nYou Lose\n";
+      scissors.disabled = true;
+      rock.disabled = true;
+      paper.disabled = true;
+    }
+    else if (computer < player){
+      div2.textContent += "\nYou Win!\n";
+      scissors.disabled = true;
+      rock.disabled = true;
+      paper.disabled = true;
+    }
+    else{
+      div2.textContent += "\nTie!\n";
+      scissors.disabled = true;
+      rock.disabled = true;
+      paper.disabled = true;
+    }
+  }
+
+});
+
+reset.addEventListener("click", () => {
+  player = 0;
+  computer = 0;
+  clicks = 0;
+  div2.textContent = "";
+  scissors.disabled = false;
+  rock.disabled = false;
+  paper.disabled = false;
+});
