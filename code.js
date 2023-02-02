@@ -104,7 +104,7 @@ rock.addEventListener("click", () => {
   clicks += 1;
   if(clicks === 5){
     if(computer > player){
-      div2.textContent += "\nYou Lose\n";
+      div2.textContent += "\nYou Lose!\n";
       scissors.disabled = true;
       rock.disabled = true;
       paper.disabled = true;
@@ -133,7 +133,7 @@ paper.addEventListener("click", () => {
   clicks += 1;
   if(clicks === 5){
     if(computer > player){
-      div2.textContent += "\nYou Lose\n";
+      div2.textContent += "\nYou Lose!\n";
       scissors.disabled = true;
       rock.disabled = true;
       paper.disabled = true;
@@ -162,7 +162,7 @@ scissors.addEventListener("click", () => {
   clicks += 1;
   if(clicks === 5){
     if(computer > player){
-      div2.textContent += "\nYou Lose\n";
+      div2.textContent += "\nYou Lose!\n";
       scissors.disabled = true;
       rock.disabled = true;
       paper.disabled = true;
