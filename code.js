@@ -129,7 +129,7 @@ rock.addEventListener("click", () => {
     }
   }
 
-  div3.textContent = `Player: ${player} | Computer ${computer}`;
+  div3.textContent = `Player: ${player} | Computer: ${computer}`;
 });
 
 paper.addEventListener("click", () => {
@@ -160,7 +160,7 @@ paper.addEventListener("click", () => {
     }
   }
 
-  div3.textContent = `Player: ${player} | Computer ${computer}`;
+  div3.textContent = `Player: ${player} | Computer: ${computer}`;
 });
 
 scissors.addEventListener("click", () => {
@@ -191,7 +191,7 @@ scissors.addEventListener("click", () => {
     }
   }
 
-  div3.textContent = `Player: ${player} | Computer ${computer}`;
+  div3.textContent = `Player: ${player} | Computer: ${computer}`;
 });
 
 reset.addEventListener("click", () => {
